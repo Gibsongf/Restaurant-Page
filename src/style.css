@@ -8,11 +8,19 @@
     --white: #ffffff; */
     --shadow-weight: 5px 5px 5px 5px ;
     --shadow-color: rgb(24, 23, 23);
+    
   }
+* {
+    font-family: "old-west";
+}
+button {
+    width: 200px;
+    height: 100px;
+    font-size: 2rem;
+}
 body{
     padding: 0;
     margin: 0;
-    font-family: "old-west";
     background-image: url("/src//img/oldscroll.jpg");
 }
 .header > div {
@@ -20,27 +28,22 @@ body{
 
 }
 .header {
-    grid-row: 1;
-    grid-column: 2/-1;
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: repeat(10,minmax(80px,1fr));
     align-items: center;
     justify-content: center;
 }
-.chef-food{
-    width: 350px;
-    border-radius: 20px;
-    box-shadow: var(--shadow-weight) var(--shadow-color);
-}
 
-#family-photo{
-    width: 800px;
+
+#family-photo,.chef-food{
+    height: 50%;
+    width: 100%;
     border-radius: 20px;
     box-shadow: var(--shadow-weight) var(--shadow-color);
 
 }
-#name-logo {
+.name-logo {
     grid-row: 1;
     grid-column: 5/9;
     font-size: 4rem;
@@ -52,13 +55,12 @@ body{
 .menu {
     grid-row: 2;
     grid-column: 6;
+    border: 1px black solid;
 }
 
 .contact {
     grid-row: 2;
     grid-column: 8;
-
-
 }
 .location {
     font-size: 1.2rem;
@@ -67,23 +69,25 @@ body{
     width: 70px;
 }
 .title {
-    font-size: 2rem;  
+    font-size: 3rem;  
 }
-
-
-    
-#content {
+.info {
     display: grid;
-    grid-template-rows: 1fr 0.5fr 0.5fr 100px ;
-    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    grid-template-rows: 1fr 1fr 100px ;
+    grid-template-columns: repeat(10,minmax(80px,1fr));
+    align-items: center;
+    justify-content: center;
 }
-
-.chef-special {
-    grid-row: 2;
-    grid-column: 2/-1;
+.chef-special,.the-family {
+    grid-row: 1;
+    grid-column: 4/9;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    gap: 20px;
 }
 .the-family {
-    grid-row: 3;
-    grid-column: 2/-1;
-
+    grid-row: 2;
 }
+
+
