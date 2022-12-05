@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("console.log(\"Everything looks fine!!\")\n\n//# sourceURL=webpack://restaurant-page/./src/index.js?");
+eval("console.log(\"Everything looks fine!!\")\n\n\nfunction elementsGenerator (type, name=false,selector) {\n    const el = document.createElement(type)\n    if(name != false){\n        if (selector == 'class'){\n            el.classList.add(name)\n        }\n        if (selector == 'id'){\n            el.setAttribute('id',name)\n        }\n    }\n    return el\n}\nfunction menu (){\n    const content = document.getElementById('content')\n    \n    let y=elementsGenerator('div','upa','class')\n    content.appendChild(y)\n   \n}\nmenu()\n\n//# sourceURL=webpack://restaurant-page/./src/index.js?");
 
 /***/ })
 
