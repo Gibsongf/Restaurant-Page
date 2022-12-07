@@ -8,13 +8,12 @@
     --white: #ffffff; */
     --shadow-weight: 5px 5px 5px 5px ;
     --shadow-color: rgb(24, 23, 23);
+    
   }
 * {
     font-family: "old-west";
 }
-#content {
-    display: grid;    
-}
+
 button {
     width: 200px;
     height: 100px;
@@ -35,7 +34,6 @@ body{
     grid-template-columns: repeat(10,minmax(100px,1fr));
     align-items: center;
     justify-content: center;
-    border-bottom: 5px solid burlywood;
 }
 
 
@@ -87,7 +85,6 @@ body{
     flex-direction: column;
     font-size: 1.5rem;
     gap: 20px;
-    
 }
 .the-family {
     grid-row: 1;
