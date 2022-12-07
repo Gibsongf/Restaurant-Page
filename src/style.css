@@ -8,10 +8,12 @@
     --white: #ffffff; */
     --shadow-weight: 5px 5px 5px 5px ;
     --shadow-color: rgb(24, 23, 23);
-    
   }
 * {
     font-family: "old-west";
+}
+#content {
+    display: grid;    
 }
 button {
     width: 200px;
@@ -30,15 +32,15 @@ body{
 .header {
     display: grid;
     grid-template-rows: 1fr 1fr;
-    grid-template-columns: repeat(10,minmax(80px,1fr));
+    grid-template-columns: repeat(10,minmax(100px,1fr));
     align-items: center;
     justify-content: center;
+    border-bottom: 5px solid burlywood;
 }
 
 
-#family-photo,#chef-food{
-    height: 50%;
-    width: 100%;
+.family-photo,.chef-food{
+   
     border-radius: 20px;
     box-shadow: var(--shadow-weight) var(--shadow-color);
 
@@ -79,15 +81,16 @@ body{
     justify-content: center;
 }
 .chef-special,.the-family {
-    grid-row: 1;
+    grid-row: 2;
     grid-column: 4/9;
     display: flex;
     flex-direction: column;
     font-size: 1.5rem;
     gap: 20px;
+    
 }
 .the-family {
-    grid-row: 2;
+    grid-row: 1;
 }
 
 

@@ -1,4 +1,6 @@
 import TitleBulletIcon from "/src/img/bullet-hole.png" ;
+import ChefSpecial from '/src/img/fav-food.jpeg'
+import FamilyPhoto from '/src/img/family-photo.jpeg'
 import './style.css';
 function elementsGenerator (element_obj) {
     const el = document.createElement(element_obj['type']);
@@ -66,9 +68,13 @@ function homeCreator () {
             const p = objCreator(['p',null,null,text],true);
             parent.appendChild(p)
         }
-        function imgElement (imgSelectorName,imgSrc,parent){
+        function imgElement (imgSelectorName,imgSrc,parent,childAppend){
             const imgTitle = objCreator(['IMG', 'class',imgSelectorName,null,imgSrc,null],true);
-            parent.firstChild.appendChild(imgTitle)
+            if (childAppend){
+                parent.firstChild.appendChild(imgTitle)
+                return
+            }
+            parent.appendChild(imgTitle)
         }
         function divWithChild (main_name,child_text){
             console.log(main_name)
@@ -81,13 +87,22 @@ function homeCreator () {
             const obj = objPattern(arr)   
             const mainDiv = divWithChild(obj['container-name'], obj['div-1-text'])
             pElement(obj['pText'],mainDiv)
-            imgElement(obj['img-top-name'],obj['img-top-src'],mainDiv)
+            imgElement(obj['img-top-name'],obj['img-top-src'],mainDiv,true)
+            imgElement(obj['img-bot-name'],obj['img-bot-src'],mainDiv)
             info.appendChild(mainDiv)
             
         }
-        const container_chef = ['chef-special','Chef Special','bullet',
-                                TitleBulletIcon,'Prime Rib, with potatoes dauphinoise and spring salad.']
-
+        const container_chef = [
+            'chef-special','Chef Special','bullet',
+            TitleBulletIcon,'Prime Rib, with potatoes dauphinoise and spring salad.',
+            'chef-food',ChefSpecial
+        ]
+        const container_family = [
+            'the-family','The Family','bullet',
+            TitleBulletIcon,'An old west theme restaurant',
+            'family-photo',FamilyPhoto]
+            
+        defaultDiv(container_family)
         defaultDiv(container_chef)
         content.appendChild(info)
     }
