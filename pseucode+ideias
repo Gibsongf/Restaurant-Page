@@ -1,11 +1,21 @@
 what we need to start :
-logo+name(red dead 2 theme)
-restaurant description
+HOME{
+    header{logo+name(red dead 2 theme)
+    navigation menu}
+    CHEF SPECIAL
+    RESTAURANT simple description and woorks photo
+}
+html that every page will have {
+    header
+    a function that create html element*
+    a pattern of the html that we create
+    function just to create the img html
+    and make a function that create this element with rename option
+}
 location:somewhere at tahiti(Rte de Ceinture 1) or moving to somewhere in tahiti
 menu page 
 food img: https://imgur.com/gallery/VyKdvvP
 we have all the img there and the food names.
-
 contac page 
 arthur m = hunter , 111 111 1111 
 John Marston = Assistant Cook and delivery boy
