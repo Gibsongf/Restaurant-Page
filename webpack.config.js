@@ -1,13 +1,29 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.js',
-  output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
-    clean: true,
-  },
   mode: 'development',
+
+  entry: {
+    index: './src/index.js',
+    /* index: {
+      import: './src/index.js',
+      dependOn: 'shared',
+    },
+    elementGenerator: {
+      import: './src/elements-generator.js',
+      dependOn: 'shared',
+    },
+    homepage: {
+      import: './src/home-page.js',
+      dependOn: 'shared',
+    }, */
+  },
+  output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    /* clean: true, */
+  },
+
   devtool: 'inline-source-map',
     module: {
         rules: 
