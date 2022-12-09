@@ -6,7 +6,7 @@
 :root {
     /* --blue: #1e90ff;
     --white: #ffffff; */
-    --shadow-weight: 5px 5px 5px 5px ;
+    --shadow-weight: 3px 3px 5px 5px ;
     --shadow-color: rgb(24, 23, 23);
     
   }
@@ -20,7 +20,7 @@
     row-gap: 50px;
 }
 
-.chef-special,.the-family {
+.sub-containers {
     font-size: 1.5rem;
     gap: 20px;
     background-repeat: no-repeat;
@@ -52,7 +52,7 @@ body{
 }
 
 
-.family-photo,.chef-food{
+.sub-containers-img{
     width: 100%;
     border-radius: 20px;
 

@@ -56,9 +56,8 @@ function pageCreator () {
     
     function objPattern(arr){
         const keys = [
-            'container-name','div-1-text',
-            'img-top-name', 'img-top-src', 
-            'pText', 'img-bot-name', 'img-bot-src']
+            'div-1-text',
+            'pText', 'img-src']
         let obj = {}
         for (let k in keys){
             obj[keys[k]] = arr[k] 
@@ -71,8 +70,8 @@ function pageCreator () {
         parent.appendChild(p)
     }
 
-    function imgElement (imgSelectorName,imgSrc,parent,childAppend){
-        const imgTitle = objNameCreator(['IMG', 'class',imgSelectorName,null,imgSrc,null],true);
+    function imgElement (imgSrc,parent,childAppend){
+        const imgTitle = objNameCreator(['IMG', 'class','sub-containers-img',null,imgSrc,null],true);
         if (childAppend){
             parent.firstChild.appendChild(imgTitle)
             return
@@ -80,23 +79,22 @@ function pageCreator () {
         parent.appendChild(imgTitle)
     }
 
-    function divWithChild (main_name,child_text){
-        console.log(main_name)
-        const defaultContainer = objNameCreator(['div', 'class',main_name],true);
+    function divWithChild (child_text){
+        const defaultContainer = objNameCreator(['div', 'class','sub-containers'],true);
         const div_child = objNameCreator(['div', 'class','title',child_text],true);
         defaultContainer.appendChild(div_child)
         return defaultContainer            
     }
     function defaultBodyCreator (arr){
         const obj = objPattern(arr)   
-        const mainDiv = divWithChild(obj['container-name'], obj['div-1-text'])
+        const mainDiv = divWithChild(obj['div-1-text'])
         pElement(obj['pText'],mainDiv)
-        imgElement(obj['img-bot-name'],obj['img-bot-src'],mainDiv)
+        imgElement(obj['img-src'],mainDiv)
         info.appendChild(mainDiv)
         return info
         
     }
-    console.log('order of info = container-name, div-1-text, img-top-name, img-top-src, pText, img-bot-name, img-bot-src')
+    console.log('order of info = div-1-text,  img-top-src, pText, img-bot-name, img-bot-src')
     return {defaultBodyCreator,menu}
 }
 export default pageCreator
