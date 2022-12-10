@@ -13,10 +13,11 @@ function homePage() {
     "An old west theme restaurant",
     FamilyPhoto,
   ];
-  const content = document.getElementById("content");
+
+  
   const create = HtmlGenerator();
-  const family_content = create.defaultBodyCreator(container_family);
+  create.defaultBodyCreator(container_family);
   create.defaultBodyCreator(container_chef);
-  content.append(family_content);
+  
 }
 export default homePage;
