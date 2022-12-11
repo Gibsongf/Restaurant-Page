@@ -1,7 +1,7 @@
 import HtmlGenerator from "/src/dom-manipulation.js";
-
+import { getAllImgs, getNameDescriptionSrc } from "/src/getmultipleimgs.js";
 function food_menu() {
-  const food_description = [
+  const img_description = [
     "Fried Catfish, with greens and boiled beans.",
     "Lamb's Heart, with boiled cabbage.",
     "Lamb's Fry, with green peas and boiled potatoes.",
@@ -9,31 +9,17 @@ function food_menu() {
     "Roast Beef, with corn and glazed carrots.",
     "Roast Prairie Chicken, with green beans, mashed potatoes and gravy.",
   ];
-  const food_content = {};
-
-  function folder_extractor_imgs(r) {
-    const name_src = r.keys();
-    name_src.forEach(
-      (key) =>
-        (food_content[key] = [r(key), food_description[name_src.indexOf(key)]])
-    );
-  }
-
-  function getNameDescriptionSrc(value) {
-    const name = value[1].split(",")[0];
-    const description = "A" + " " + value[1];
-    const src = value[0];
-    return [name, description, src];
-  }
-
-  folder_extractor_imgs(
-    require.context("/src/img/restaurant-imgs-foods", true, /\.jpeg/)
+  const path_search = require.context(
+    "/src/img/restaurant-imgs-foods",
+    false,
+    /\.jpeg/
   );
+  const imgsObj = getAllImgs(path_search, img_description);
 
   const create = HtmlGenerator();
-  let keys = Object.keys(food_content);
+  let keys = Object.keys(imgsObj);
   for (let key of keys) {
-    let img = getNameDescriptionSrc(food_content[key]);
+    let img = getNameDescriptionSrc(imgsObj[key]);
     create.defaultBodyCreator(img);
   }
 }

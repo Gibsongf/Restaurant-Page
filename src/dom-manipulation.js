@@ -1,4 +1,3 @@
-import "./style.css";
 
 function pageCreator() {
   const content = document.getElementById("content");
