@@ -5,15 +5,16 @@ import FamilyPhoto from "/src/img/family-photo.jpeg";
 
 const create = HtmlGenerator();
 
-function appendElementsObj (element_obj){
+function appendElementsObj(element_obj) {
   let keys = Object.keys(element_obj);
   for (let key of keys) {
-  let img = getNameDescriptionSrc(element_obj[key]);
-  create.defaultBodyCreator(img);
-}
+    let img = getNameDescriptionSrc(element_obj[key]);
+    create.defaultBodyCreator(img);
+  }
   create.smaller_img();
 }
 function MenuPage() {
+  document.title = "Menu";
   const img_description = [
     "Fried Catfish, with greens and boiled beans.",
     "Lamb's Heart, with boiled cabbage.",
@@ -28,28 +29,25 @@ function MenuPage() {
     /\.jpeg/
   );
   const imgsObj = getAllImgs(path_search, img_description);
-  appendElementsObj(imgsObj)
+  appendElementsObj(imgsObj);
 }
 
 function ContactPage() {
+  document.title = "Contact";
   const description = [
-      "Chef Cook and The Butcher",
-      "Security and Waiter",
-      "Finance Management",
-      "Security and Waiter",
-  ]
-  const path_search = require.context(
-    "/src/img/workers",
-    false,
-    /\.jpg/
-  );
+    "Chef Cook and The Butcher",
+    "Security and Waiter",
+    "Finance Management",
+    "Security and Waiter",
+  ];
+  const path_search = require.context("/src/img/workers", false, /\.jpg/);
   const imgsObj = getAllImgs(path_search, description);
-  appendElementsObj(imgsObj)
+  appendElementsObj(imgsObj);
   /* const create = HtmlGenerator(); */
-  
 }
 
 function HomePage() {
+  document.title = "Home";
   const container_chef = [
     "Chef Special",
     "Pearson's Stew (Beef Stew).",
@@ -60,10 +58,9 @@ function HomePage() {
     "An old west theme restaurant",
     FamilyPhoto,
   ];
-  
+
   /* const create = HtmlGenerator(); */
   create.defaultBodyCreator(container_family);
   create.defaultBodyCreator(container_chef);
-  
 }
-export {MenuPage,ContactPage,HomePage};
+export { MenuPage, ContactPage, HomePage };
