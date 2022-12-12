@@ -1,7 +1,6 @@
 
 function pageCreator() {
   const content = document.getElementById("content");
-  const info = objNameCreator(["div", "class", "info", null], true);
 
   function elementsGenerator(element_obj) {
     const el = document.createElement(element_obj["type"]);
@@ -76,9 +75,13 @@ function pageCreator() {
     parent.appendChild(p);
   }
 
-  function imgElement(imgSrc, parent, childAppend) {
+  function imgElement(imgSrc, parent, childAppend, default_selector) {
+    let img_info = ["IMG", "class", "sub-containers-img", null, imgSrc, null]
+    if (default_selector>= 1)(
+      img_info[2] = default_selector
+    )
     const imgTitle = objNameCreator(
-      ["IMG", "class", "sub-containers-img", null, imgSrc, null],
+      img_info,
       true
     );
     if (childAppend) {
@@ -100,7 +103,16 @@ function pageCreator() {
     defaultContainer.appendChild(div_child);
     return defaultContainer;
   }
+  function has_info_div(){
+    const info = document.querySelector('.info')
+    if (info === null){
+      const info = objNameCreator(["div", "class", "info", null], true);
+      return info
+    }
+    return info
+  }
   function defaultBodyCreator(arr) {
+    const info = has_info_div();
     const obj = objPattern(arr);
     const mainDiv = divWithChild(obj["div-1-text"]);
     pElement(obj["pText"], mainDiv);
@@ -108,7 +120,13 @@ function pageCreator() {
     info.appendChild(mainDiv);
     content.append(info);
   }
+
+  function smaller_img(){
+    const imgs = document.querySelectorAll('.sub-containers-img')
+    imgs.forEach(img => img.setAttribute("style",'width:650px'))
+  }
+  
   /* console.log('order of info = div-1-text,  img-top-src, pText, img-bot-name, img-bot-src') */
-  return { defaultBodyCreator, menu };
+  return { defaultBodyCreator, menu , smaller_img, imgElement};
 }
 export default pageCreator;

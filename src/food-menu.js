@@ -22,5 +22,6 @@ function food_menu() {
     let img = getNameDescriptionSrc(imgsObj[key]);
     create.defaultBodyCreator(img);
   }
+  create.smaller_img();
 }
 export default food_menu;

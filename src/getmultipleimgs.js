@@ -5,12 +5,13 @@ function  getAllImgs(imgs_files,contentDescription) {
     (key) =>
         (folder_content[key] = [imgs_files(key), contentDescription[name_src.indexOf(key)]])
     );
+    console.log(folder_content)
     return folder_content
 }
 
 function getNameDescriptionSrc(value) {
     const name = value[1].split(",")[0];
-    const description = "A" + " " + value[1];
+    const description =  value[1];
     const src = value[0];
     return [name, description, src];
 }
