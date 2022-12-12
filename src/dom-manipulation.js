@@ -33,7 +33,7 @@ function pageCreator() {
     }
     return obj;
   }
-  function menu() {
+  function nav() {
     const header = objNameCreator(["div", "class", "header", null], true);
     const restaurantName = objNameCreator([
       "h1",
@@ -127,6 +127,6 @@ function pageCreator() {
   }
   
   /* console.log('order of info = div-1-text,  img-top-src, pText, img-bot-name, img-bot-src') */
-  return { defaultBodyCreator, menu , smaller_img, imgElement};
+  return { defaultBodyCreator, nav , smaller_img, imgElement};
 }
 export default pageCreator;
