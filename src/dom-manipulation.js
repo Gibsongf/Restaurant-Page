@@ -57,6 +57,8 @@ function pageCreator() {
   function multipleDiv(el_info, parent) {
     el_info.forEach((toCreate) => {
       const el = elementsGenerator(toCreate);
+      /* const span = objNameCreator(["span", "class", "img-bullet", ""],true)
+      el.appendChild(span) */
       parent.appendChild(el);
     });
   }

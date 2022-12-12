@@ -5,7 +5,6 @@ function  getAllImgs(imgs_files,contentDescription) {
     (key) =>
         (folder_content[key] = [imgs_files(key), contentDescription[name_src.indexOf(key)]])
     );
-    console.log(folder_content)
     return folder_content
 }
 

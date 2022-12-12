@@ -1,44 +1,33 @@
-import HomePage from '/src/home-page.js'
-import MenuPage from "/src/food-menu.js"
-import ContactPage from "/src/contact-page.js"
+import {MenuPage,ContactPage,HomePage } from './createPages.js'
 import HtmlGenerator from '/src/dom-manipulation.js'
+import BtnIconActive from './MenuStyle.js';
 import "./style.css";
 const menuDom = HtmlGenerator();
 menuDom.nav()
-const btnHome = document.querySelector('.home')
-const btnContact = document.querySelector('.contact')
-const btnMenu = document.querySelector('.menu')
-btnHome.className += " active";
 HomePage()
+BtnIconActive ()
+/* const btnHome = document.querySelector('.home')
+btnHome.setAttribute('id','bullet')
+
+const pagesObj = {
+    'Contact':ContactPage,
+    'Menu': MenuPage,
+    'Home': HomePage 
+  }
 function clean_info (e){
     const info  = document.querySelector('.info')
     while (info.firstChild) {
         info.removeChild(info.lastChild);
     }
-    if (e.textContent == 'Contact'){
-        ContactPage()
-    }
-    if (e.textContent == 'Menu'){
-        MenuPage()
-    }
-    if (e.textContent == 'Home'){
-        HomePage()
-    }
+    pagesObj[e.textContent]()
 }
-function btnActive (){
-    let current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-    clean_info(this)
-}
-let btns = document.querySelectorAll('button');
 
-// Loop through the buttons and add the active class to the current/clicked button
-for (let i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click", function() {
-    let current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
+function btnActive() {
+    let current = document.getElementById('bullet')
+    current.setAttribute('id','');
+    this.setAttribute('id','bullet')
     clean_info(this)
-  });
-}
+  }
+let btns = document.querySelectorAll('button');
+btns.forEach(btn => btn.addEventListener('click',btnActive) ) */
+

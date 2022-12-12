@@ -33,15 +33,22 @@
 }
 
 button {
-    width: 200px;
+    width: 245px;
     height: 100px;
     font-size: 2rem;
-    border: 3px solid black;
+    /* border: 3px solid black; */
     background: rgba(253, 253, 253, 0);
     background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: 70px 70px;
 }
-button:active, button:hover,button:focus{
+
+#icon-on {
     background-image: url("/src/img/bullet-hole.png");
+    background-position: right bottom;
+    background-size: 70px 70px;
+    outline: none
+
 }
 body{
     padding: 0;
@@ -71,8 +78,12 @@ body{
 }
 .home {
     grid-row: 2;
+    /* background-image: url("/src/img/bullet-hole.png");
+    background-position: right bottom;
+    background-size: 70px 70px; */
 
 }
+
 .menu {
     grid-row: 2;
 }
@@ -83,9 +94,9 @@ body{
 .location {
     font-size: 1.2rem;
 }
-.bullet {
+/* .bullet {
     width: 70px;
-}
+} */
 .title {
     font-size: 3rem;  
 }
