@@ -43,7 +43,6 @@ function ContactPage() {
   const path_search = require.context("/src/img/workers", false, /\.jpg/);
   const imgsObj = getAllImgs(path_search, description);
   appendElementsObj(imgsObj);
-  /* const create = HtmlGenerator(); */
 }
 
 function HomePage() {

@@ -60,7 +60,7 @@ function pageCreator() {
     });
   }
 
-  function objPattern(arr) {
+  function objDefault(arr) {
     const keys = ["div-1-text", "pText", "img-src"];
     let obj = {};
     for (let k in keys) {
@@ -74,9 +74,8 @@ function pageCreator() {
     parent.appendChild(p);
   }
 
-  function imgElement(imgSrc, parent, childAppend, default_selector) {
+  function imgElement(imgSrc, parent, childAppend) {
     let img_info = ["IMG", "class", "sub-containers-img", null, imgSrc, null];
-    if (default_selector >= 1) img_info[2] = default_selector;
     const imgTitle = objNameCreator(img_info, true);
     if (childAppend) {
       parent.firstChild.appendChild(imgTitle);
@@ -107,7 +106,7 @@ function pageCreator() {
   }
   function defaultBodyCreator(arr) {
     const info = has_info_div();
-    const obj = objPattern(arr);
+    const obj = objDefault(arr);
     const mainDiv = divWithChild(obj["div-1-text"]);
     pElement(obj["pText"], mainDiv);
     imgElement(obj["img-src"], mainDiv);
@@ -117,7 +116,7 @@ function pageCreator() {
 
   function smaller_img() {
     const imgs = document.querySelectorAll(".sub-containers-img");
-    imgs.forEach((img) => img.setAttribute("style", "width:650px"));
+    imgs.forEach((img) => img.setAttribute("style", "width:85%"));
   }
 
   return { defaultBodyCreator, nav, smaller_img, imgElement };
