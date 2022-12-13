@@ -1,6 +1,4 @@
-function pageCreator() {
-  const content = document.getElementById("content");
-
+function createElementDom() {
   function elementsGenerator(element_obj) {
     const el = document.createElement(element_obj["type"]);
     if (element_obj["type"] == "IMG") {
@@ -32,33 +30,7 @@ function pageCreator() {
     }
     return obj;
   }
-  function nav() {
-    const header = objNameCreator(["div", "class", "header", null], true);
-    const restaurantName = objNameCreator([
-      "h1",
-      "class",
-      "name-logo",
-      "Van der Linde",
-    ]);
-    const btnHome = objNameCreator(["button", "class", "home", "Home"]);
-    const btnMenu = objNameCreator(["button", "class", "menu", "Menu"]);
-    const btnContact = objNameCreator([
-      "button",
-      "class",
-      "contact",
-      "Contact",
-    ]);
-    const arr = [restaurantName, btnHome, btnMenu, btnContact];
-
-    content.appendChild(header);
-    multipleDiv(arr, header);
-  }
-  function multipleDiv(el_info, parent) {
-    el_info.forEach((toCreate) => {
-      const el = elementsGenerator(toCreate);
-      parent.appendChild(el);
-    });
-  }
+  
 
   function objDefault(arr) {
     const keys = ["div-1-text", "pText", "img-src"];
@@ -83,13 +55,21 @@ function pageCreator() {
     }
     parent.appendChild(imgTitle);
   }
+  return {elementsGenerator,objDefault,pElement,imgElement,objNameCreator}
 
+}
+
+
+
+function addModifyDom (){
+  const content = document.getElementById("content");
+  const createElements = createElementDom()
   function divWithChild(child_text) {
-    const defaultContainer = objNameCreator(
+    const defaultContainer = createElements.objNameCreator(
       ["div", "class", "sub-containers"],
       true
     );
-    const div_child = objNameCreator(
+    const div_child = createElements.objNameCreator(
       ["div", "class", "title", child_text],
       true
     );
@@ -99,17 +79,17 @@ function pageCreator() {
   function has_info_div() {
     const info = document.querySelector(".info");
     if (info === null) {
-      const info = objNameCreator(["div", "class", "info", null], true);
+      const info = createElements.objNameCreator(["div", "class", "info", null], true);
       return info;
     }
     return info;
   }
   function defaultBodyCreator(arr) {
     const info = has_info_div();
-    const obj = objDefault(arr);
+    const obj = createElements.objDefault(arr);
     const mainDiv = divWithChild(obj["div-1-text"]);
-    pElement(obj["pText"], mainDiv);
-    imgElement(obj["img-src"], mainDiv);
+    createElements.pElement(obj["pText"], mainDiv);
+    createElements.imgElement(obj["img-src"], mainDiv);
     info.appendChild(mainDiv);
     content.append(info);
   }
@@ -118,7 +98,7 @@ function pageCreator() {
     const imgs = document.querySelectorAll(".sub-containers-img");
     imgs.forEach((img) => img.setAttribute("style", "width:85%"));
   }
-
-  return { defaultBodyCreator, nav, smaller_img, imgElement };
+  return {defaultBodyCreator,smaller_img}
 }
-export default pageCreator;
+
+export {createElementDom, addModifyDom }

@@ -1,9 +1,9 @@
-import HtmlGenerator from "/src/dom-manipulation.js";
+import {addModifyDom} from "/src/dom-manipulation.js";
 import { getAllImgs, getNameDescriptionSrc } from "/src/getmultipleimgs.js";
 import ChefSpecial from "/src/img/pearson-stew.jpeg";
 import FamilyPhoto from "/src/img/family-photo.jpeg";
 
-const create = HtmlGenerator();
+const create = addModifyDom();
 
 function appendElementsObj(element_obj) {
   let keys = Object.keys(element_obj);
@@ -13,6 +13,9 @@ function appendElementsObj(element_obj) {
   }
   create.smaller_img();
 }
+
+
+
 function MenuPage() {
   document.title = "Menu";
   const img_description = [
