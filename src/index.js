@@ -1,4 +1,4 @@
-import HtmlGenerator from './src/dom-manipulation.js'
+import HtmlGenerator from '/src/dom-manipulation.js'
 import BtnIconActive from './Menubtn.js';
 import "./style.css";
 import {HomePage }from './createPages.js'
