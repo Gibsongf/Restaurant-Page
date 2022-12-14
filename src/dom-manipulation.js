@@ -1,95 +1,72 @@
 function createElementDom() {
-  function elementsGenerator(element_obj) {
-    const el = document.createElement(element_obj["type"]);
-    if (element_obj["type"] == "IMG") {
-      el.setAttribute("src", element_obj["src_img"]);
-    }
 
-    if (element_obj["selector_type"] == "class") {
-      el.classList.add(element_obj["selector_name"]);
-    }
-    if (element_obj["selector_type"] == "id") {
-      el.setAttribute("id", element_obj["selector_name"]);
-    }
 
-    el.textContent = element_obj["text_content"];
-    return el;
+  function h1Element (selector_name,innerContent){
+    const h1 = document.createElement('h1')
+    h1.className = selector_name
+    h1.textContent = innerContent
+    return h1
   }
-
-  function objNameCreator(lst, makeElement) {
-    const obj = {
-      type: lst[0],
-      selector_type: lst[1],
-      selector_name: lst[2],
-      text_content: lst[3],
-      src_img: lst[4],
-    };
-    if (makeElement) {
-      const el = elementsGenerator(obj);
-      return el;
-    }
-    return obj;
+  function btnElement (selector_name,text){
+    const btn = document.createElement('button');
+    btn.className = selector_name
+    btn.textContent = text
+    return btn
   }
   
-
-  function objDefault(arr) {
-    const keys = ["div-1-text", "pText", "img-src"];
-    let obj = {};
-    for (let k in keys) {
-      obj[keys[k]] = arr[k];
-    }
-    return obj;
-  }
-
-  function pElement(text, parent) {
-    const p = objNameCreator(["p", null, null, text], true);
+  function pElement (text,parent){
+    const p = document.createElement('p');
+    p.textContent = text;
     parent.appendChild(p);
   }
 
   function imgElement(imgSrc, parent, childAppend) {
-    let img_info = ["IMG", "class", "sub-containers-img", null, imgSrc, null];
-    const imgTitle = objNameCreator(img_info, true);
+    const img = document.createElement("IMG");
+    img.className = "sub-containers-img";
+    img.src = imgSrc; 
+    
     if (childAppend) {
-      parent.firstChild.appendChild(imgTitle);
+      parent.firstChild.appendChild(img);
       return;
     }
-    parent.appendChild(imgTitle);
+    parent.appendChild(img);
   }
-  return {elementsGenerator,objDefault,pElement,imgElement,objNameCreator}
+  function divElement (selector_name,text){
+    const div = document.createElement('div')
+    div.className = selector_name
+    div.textContent = text
+    return div
+  }
+  function divWithChild(child_text) {
+    const defaultContainer = divElement("sub-containers")
+    const div_child = divElement("title", child_text);
+    defaultContainer.appendChild(div_child);
+    return defaultContainer;
+  }
+  return {btnElement,divWithChild,divElement,pElement,imgElement,h1Element}
 
 }
 
 
 
-function addModifyDom (){
+function defaultPagePattern (){
   const content = document.getElementById("content");
   const createElements = createElementDom()
-  function divWithChild(child_text) {
-    const defaultContainer = createElements.objNameCreator(
-      ["div", "class", "sub-containers"],
-      true
-    );
-    const div_child = createElements.objNameCreator(
-      ["div", "class", "title", child_text],
-      true
-    );
-    defaultContainer.appendChild(div_child);
-    return defaultContainer;
-  }
+  
   function has_info_div() {
     const info = document.querySelector(".info");
     if (info === null) {
-      const info = createElements.objNameCreator(["div", "class", "info", null], true);
+      const info = createElements.divElement("info");
       return info;
     }
     return info;
   }
-  function defaultBodyCreator(arr) {
+  function defaultContentCreator(arr) {
+    const obj = {"divText":arr[0],"pText":arr[1],"imgSrc":arr[2]}
     const info = has_info_div();
-    const obj = createElements.objDefault(arr);
-    const mainDiv = divWithChild(obj["div-1-text"]);
+    const mainDiv = createElements.divWithChild(obj["divText"]);
     createElements.pElement(obj["pText"], mainDiv);
-    createElements.imgElement(obj["img-src"], mainDiv);
+    createElements.imgElement(obj["imgSrc"], mainDiv);
     info.appendChild(mainDiv);
     content.append(info);
   }
@@ -98,7 +75,7 @@ function addModifyDom (){
     const imgs = document.querySelectorAll(".sub-containers-img");
     imgs.forEach((img) => img.setAttribute("style", "width:85%"));
   }
-  return {defaultBodyCreator,smaller_img}
+  return {defaultContentCreator,smaller_img}
 }
 
-export {createElementDom, addModifyDom }
+export {createElementDom, defaultPagePattern }

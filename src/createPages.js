@@ -1,15 +1,15 @@
-import {addModifyDom} from "/src/dom-manipulation.js";
+import {defaultPagePattern} from "/src/dom-manipulation.js";
 import { getAllImgs, getNameDescriptionSrc } from "/src/getmultipleimgs.js";
 import ChefSpecial from "/src/img/pearson-stew.jpeg";
 import FamilyPhoto from "/src/img/family-photo.jpeg";
 
-const create = addModifyDom();
+const create = defaultPagePattern();
 
 function appendElementsObj(element_obj) {
   let keys = Object.keys(element_obj);
   for (let key of keys) {
     let img = getNameDescriptionSrc(element_obj[key]);
-    create.defaultBodyCreator(img);
+    create.defaultContentCreator(img);
   }
   create.smaller_img();
 }
@@ -60,9 +60,7 @@ function HomePage() {
     "An old west theme restaurant",
     FamilyPhoto,
   ];
-
-  /* const create = HtmlGenerator(); */
-  create.defaultBodyCreator(container_family);
-  create.defaultBodyCreator(container_chef);
+  create.defaultContentCreator(container_family);
+  create.defaultContentCreator(container_chef);
 }
 export { MenuPage, ContactPage, HomePage };

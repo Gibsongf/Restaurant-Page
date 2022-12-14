@@ -4,28 +4,17 @@ import {createElementDom} from "/src/dom-manipulation.js";
 
 function navElement() {
   const domElements = createElementDom()
-  console.log(domElements)
-  const header = domElements.objNameCreator(["div", "class", "header", null], true);
-  const restaurantName = domElements.objNameCreator([
-    "h1",
-    "class",
-    "name-logo",
-    "Van der Linde",
-  ]);
-  const btnHome = domElements.objNameCreator(["button", "class", "home", "Home"]);
-  const btnMenu = domElements.objNameCreator(["button", "class", "menu", "Menu"]);
-  const btnContact = domElements.objNameCreator([
-    "button",
-    "class",
-    "contact",
-    "Contact",
-  ]);
+  const header = domElements.divElement("header");
+  const restaurantName = domElements.h1Element("name-logo","Van der Linde");
+  const btnHome = domElements.btnElement("home", "Home");
+  const btnMenu = domElements.btnElement("menu", "Menu");
+  const btnContact = domElements.btnElement("contact","Contact")
+    
   const arr = [restaurantName, btnHome, btnMenu, btnContact];
 
   content.appendChild(header);
   arr.forEach((toCreate) => {
-    const el = domElements.elementsGenerator(toCreate);
-    header.appendChild(el);
+    header.appendChild(toCreate);
   })
   btnIconActive()
 }
