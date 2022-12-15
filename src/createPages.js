@@ -1,11 +1,11 @@
 import {defaultPagePattern} from "/src/dom-manipulation.js";
 import { getAllImgs, getNameDescriptionSrc } from "/src/getmultipleimgs.js";
 import ChefSpecial from "/src/img/pearson-stew.jpeg";
-import FamilyPhoto from "/src/img/family-photo.jpeg";
-
+import Rdr2 from "/src/img/rdr2.jpeg";
+import Restaurant from '/src/img/our-restaurant.jpg'
 const create = defaultPagePattern();
 
-function appendElementsObj(element_obj) {
+function appendToPage(element_obj) {
   let keys = Object.keys(element_obj);
   for (let key of keys) {
     let img = getNameDescriptionSrc(element_obj[key]);
@@ -32,7 +32,7 @@ function MenuPage() {
     /\.jpeg/
   );
   const imgsObj = getAllImgs(path_search, img_description);
-  appendElementsObj(imgsObj);
+  appendToPage(imgsObj);
 }
 
 function ContactPage() {
@@ -45,7 +45,7 @@ function ContactPage() {
   ];
   const path_search = require.context("/src/img/workers", false, /\.jpg/);
   const imgsObj = getAllImgs(path_search, description);
-  appendElementsObj(imgsObj);
+  appendToPage(imgsObj);
 }
 
 function HomePage() {
@@ -55,12 +55,20 @@ function HomePage() {
     "Pearson's Stew (Beef Stew).",
     ChefSpecial,
   ];
-  const container_family = [
-    "The Family",
-    "An old west theme restaurant",
-    FamilyPhoto,
+  const container_location = [
+    "Location",
+    "Tahiti, Rte de Ceinture 1",
+    Restaurant,
   ];
-  create.defaultContentCreator(container_family);
+  const container_description = [
+    "Old West Theme",
+    "Here is our crew dress like a characters from Red Dead Redemption 2",
+    Rdr2
+  ]
+  create.defaultContentCreator(container_description);
+  create.defaultContentCreator(container_location);
   create.defaultContentCreator(container_chef);
+  
+
 }
 export { MenuPage, ContactPage, HomePage };

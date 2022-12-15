@@ -4,11 +4,11 @@ import {createElementDom} from "/src/dom-manipulation.js";
 
 function navElement() {
   const domElements = createElementDom()
-  const header = domElements.divElement("header");
-  const restaurantName = domElements.h1Element("name-logo","Van der Linde");
-  const btnHome = domElements.btnElement("home", "Home");
-  const btnMenu = domElements.btnElement("menu", "Menu");
-  const btnContact = domElements.btnElement("contact","Contact")
+  const header = domElements.simple_el('div',"header");
+  const restaurantName = domElements.simple_el('h1',"name-logo","Van der Linde");
+  const btnHome = domElements.simple_el('button',"home", "Home");
+  const btnMenu = domElements.simple_el('button',"menu", "Menu");
+  const btnContact = domElements.simple_el('button',"contact","Contact")
     
   const arr = [restaurantName, btnHome, btnMenu, btnContact];
 

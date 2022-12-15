@@ -1,49 +1,32 @@
 function createElementDom() {
-
-
-  function h1Element (selector_name,innerContent){
-    const h1 = document.createElement('h1')
-    h1.className = selector_name
-    h1.textContent = innerContent
-    return h1
-  }
-  function btnElement (selector_name,text){
-    const btn = document.createElement('button');
-    btn.className = selector_name
-    btn.textContent = text
-    return btn
-  }
   
-  function pElement (text,parent){
+  function simple_el (type,selector_name,innerContent){
+    const ell = document.createElement(type);
+    ell.className = selector_name;
+    ell.textContent = innerContent;
+    return ell
+  }
+  function pElement (text){
     const p = document.createElement('p');
     p.textContent = text;
-    parent.appendChild(p);
+    return p
   }
 
-  function imgElement(imgSrc, parent, childAppend) {
+  function imgElement(imgSrc) {
     const img = document.createElement("IMG");
     img.className = "sub-containers-img";
     img.src = imgSrc; 
+    return img
     
-    if (childAppend) {
-      parent.firstChild.appendChild(img);
-      return;
-    }
-    parent.appendChild(img);
   }
-  function divElement (selector_name,text){
-    const div = document.createElement('div')
-    div.className = selector_name
-    div.textContent = text
-    return div
-  }
+  
   function divWithChild(child_text) {
-    const defaultContainer = divElement("sub-containers")
-    const div_child = divElement("title", child_text);
+    const defaultContainer =  simple_el('div',"sub-containers")
+    const div_child =  simple_el('div',"title", child_text);
     defaultContainer.appendChild(div_child);
     return defaultContainer;
   }
-  return {btnElement,divWithChild,divElement,pElement,imgElement,h1Element}
+  return {divWithChild,pElement,imgElement,simple_el}
 
 }
 
@@ -56,19 +39,24 @@ function defaultPagePattern (){
   function has_info_div() {
     const info = document.querySelector(".info");
     if (info === null) {
-      const info = createElements.divElement("info");
+      const info = createElements.simple_el('div',"info");
       return info;
     }
     return info;
   }
+
   function defaultContentCreator(arr) {
     const obj = {"divText":arr[0],"pText":arr[1],"imgSrc":arr[2]}
     const info = has_info_div();
     const mainDiv = createElements.divWithChild(obj["divText"]);
-    createElements.pElement(obj["pText"], mainDiv);
-    createElements.imgElement(obj["imgSrc"], mainDiv);
+    const p = createElements.pElement(obj["pText"]);
+    const img = createElements.imgElement(obj["imgSrc"]);
+    
+    mainDiv.append(p)
+    mainDiv.append(img)
     info.appendChild(mainDiv);
     content.append(info);
+    return mainDiv
   }
 
   function smaller_img() {
