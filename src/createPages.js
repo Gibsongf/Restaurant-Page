@@ -62,7 +62,7 @@ function HomePage() {
   ];
   const container_description = [
     "Old West Theme",
-    "Here is our crew dress like a characters from Red Dead Redemption 2",
+    "Here's our crew dress like characters from Red Dead Redemption 2",
     Rdr2
   ]
   create.defaultContentCreator(container_description);
